@@ -1,0 +1,43 @@
+{
+  "bindings": [
+    {
+      "name": "myTimer",
+      "type": "timerTrigger",
+      "direction": "in",
+      "schedule": "0 */5 * * * *"
+    },
+    {
+      "type": "table",
+      "name": "registerProTable",
+      "tableName": "proTable",
+      "connection": "alexhelloworld95ed_STORAGE",
+      "direction": "out"
+    },
+    {
+      "type": "table",
+      "name": "searchProTable",
+      "tableName": "proTable",
+      "take": 50,
+      "connection": "alexhelloworld95ed_STORAGE",
+      "direction": "in",
+      "partitionKey": "eventi_pro"
+    },
+    {
+      "type": "table",
+      "name": "searchClientTable",
+      "tableName": "clientTable",
+      "partitionKey": "eventi_client",
+      "take": 50,
+      "connection": "alexhelloworld95ed_STORAGE",
+      "direction": "in"
+    },
+    {
+      "type": "table",
+      "name": "registerClientTable",
+      "tableName": "clientTable",
+      "connection": "alexhelloworld95ed_STORAGE",
+      "direction": "out"
+    }
+  ],
+  "disabled": false
+}

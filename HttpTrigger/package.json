@@ -1,0 +1,20 @@
+{
+  "name": "moviedbwebhook",
+  "version": "1.0.0",
+  "description": "",
+  "repository": "https://lexxusss@bitbucket.org/lexxusss/moviedbwebhook.git",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.3",
+    "newsapi": "^2.2.0",
+    "underscore" : "^1.9.0",
+    "md5" : "^2.2.1"
+  }
+}
