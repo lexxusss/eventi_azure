@@ -15,7 +15,7 @@
       "type": "table",
       "name": "registerProTable",
       "tableName": "proTable",
-      "connection": "alexhelloworld95ed_STORAGE",
+      "connection": "eventiappb6cb_STORAGE",
       "direction": "out"
     },
     {
@@ -23,7 +23,7 @@
       "name": "searchProTable",
       "tableName": "proTable",
       "take": 50,
-      "connection": "alexhelloworld95ed_STORAGE",
+      "connection": "eventiappb6cb_STORAGE",
       "direction": "in",
       "partitionKey": "eventi_pro"
     },
@@ -33,14 +33,14 @@
       "tableName": "clientTable",
       "partitionKey": "eventi_client",
       "take": 50,
-      "connection": "alexhelloworld95ed_STORAGE",
+      "connection": "eventiappb6cb_STORAGE",
       "direction": "in"
     },
     {
       "type": "table",
       "name": "registerClientTable",
       "tableName": "clientTable",
-      "connection": "alexhelloworld95ed_STORAGE",
+      "connection": "eventiappb6cb_STORAGE",
       "direction": "out"
     }
   ],
