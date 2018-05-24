@@ -1,0 +1,17 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "WEBSITE_SLOT_NAME": "Production",
+    "FUNCTIONS_EXTENSION_VERSION": "~1",
+    "ScmType": "GitHub",
+    "WEBSITE_AUTH_ENABLED": "False",
+    "FUNCTION_APP_EDIT_MODE": "readwrite",
+    "APPINSIGHTS_INSTRUMENTATIONKEY": "a28ba51a-ffb8-4a64-bef9-9287b4a560d2",
+    "AzureWebJobsDashboard": "DefaultEndpointsProtocol=https;AccountName=eventiappb6cb;AccountKey=bZbgYf+76BCug7gHRvqfyItwZ819AkFv6AoEy3XOv8LJD1rtAadt1yZgm6c4Fyy2jQdGQ9iLLssLmMqzaV8y1A==",
+    "WEBSITE_NODE_DEFAULT_VERSION": "6.5.0",
+    "WEBSITE_CONTENTAZUREFILECONNECTIONSTRING": "DefaultEndpointsProtocol=https;AccountName=eventiappb6cb;AccountKey=bZbgYf+76BCug7gHRvqfyItwZ819AkFv6AoEy3XOv8LJD1rtAadt1yZgm6c4Fyy2jQdGQ9iLLssLmMqzaV8y1A==",
+    "WEBSITE_CONTENTSHARE": "eventi-appb6cb",
+    "WEBSITE_SITE_NAME": "Eventi-app",
+    "AzureWebJobsStorage": "DefaultEndpointsProtocol=https;AccountName=eventiappb6cb;AccountKey=bZbgYf+76BCug7gHRvqfyItwZ819AkFv6AoEy3XOv8LJD1rtAadt1yZgm6c4Fyy2jQdGQ9iLLssLmMqzaV8y1A=="
+  }
+}

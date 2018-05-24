@@ -4,6 +4,7 @@ var proService = require('./proService');
 module.exports = function (context, req) {
     let body = req.body;
 
+
     if (body) {
         let query = body.queryResult;
 
@@ -15,13 +16,13 @@ module.exports = function (context, req) {
             let session = body.session;
             let debug = params['debug'];
 
-            if (intent['name'] == RegisterProIntentName) {
+            if (intent['name'] === RegisterProIntentName) {
                 let proResponse = proService.registerPro(context, params, contexts, originalDetectIntentRequest, session, debug);
 
                 return context.res.json(proResponse);
             }
 
-            if (intent['name'] == SearchProIntentName) {
+            if (intent['name'] === SearchProIntentName) {
                 let clientResponse = proService.registerClient(context, params, contexts, originalDetectIntentRequest, session, debug);
 
                 let proResponse = proService.searchPro(context, params, contexts, debug);
