@@ -4,7 +4,6 @@ var proService = require('./proService');
 module.exports = function (context, req) {
     let body = req.body;
 
-
     if (body) {
         let query = body.queryResult;
 
