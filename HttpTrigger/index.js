@@ -1,5 +1,6 @@
 
 var proService = require('./proService');
+var md5 = require('md5');
 
 module.exports = function (context, req) {
     let body = req.body;
@@ -30,11 +31,14 @@ module.exports = function (context, req) {
             }
 
             if (intent['name'] === StopIntentName) {
-                context.bindings.debugCollection = {body: body};
-
-                let stopNotifyResponse = proService.stopNotifyClient(context, params, contexts, debug);
+                let stopNotifyResponse = proService.stopNotifyClient(context, params, contexts, originalDetectIntentRequest, debug);
 
                 return context.res.json(stopNotifyResponse);
+                // context.bindings.setDebugCollection = stopNotifyResponse;
+
+                // return context.res.json({fulfillmentText: 'yeah', source: stopNotifyResponse});
+
+                // return context.res.json(stopNotifyResponse);
             }
             //
             // if (intent['name'] === StartIntentName) {
