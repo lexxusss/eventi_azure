@@ -29,11 +29,13 @@ module.exports = function (context, req) {
                 return context.res.json(proResponse);
             }
 
-            // if (intent['name'] === StopIntentName) {
-            //     let stopNotifyResponse = proService.stopNotifyClient(context, params, contexts, debug);
-            //
-            //     return context.res.json(proResponse);
-            // }
+            if (intent['name'] === StopIntentName) {
+                context.bindings.debugCollection = {body: body};
+
+                let stopNotifyResponse = proService.stopNotifyClient(context, params, contexts, debug);
+
+                return context.res.json(stopNotifyResponse);
+            }
             //
             // if (intent['name'] === StartIntentName) {
             //     let stopNotifyResponse = proService.startNotifyClient(context, params, contexts, debug);

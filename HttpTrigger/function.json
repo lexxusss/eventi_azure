@@ -74,6 +74,14 @@
       "collectionName": "clientCollection",
       "connection": "alex-hello-world_DOCUMENTDB",
       "direction": "out"
+    },
+    {
+      "type": "documentDB",
+      "name": "setDebugCollection",
+      "databaseName": "eventi",
+      "collectionName": "debugCollection",
+      "connection": "alex-hello-world_DOCUMENTDB",
+      "direction": "out"
     }
   ],
   "disabled": false

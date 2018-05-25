@@ -169,6 +169,8 @@ function registerClient(context, params, contexts, originalDetectIntentRequest, 
 function stopNotifyClient(context, params, contexts, originalDetectIntentRequest, debug) {
     let userId = getUserId(originalDetectIntentRequest);
 
+    return userId;
+
     if (userId) {
         let found = _.where(context.bindings.searchClientCollection, {
             User_ID: getUserId(originalDetectIntentRequest)
