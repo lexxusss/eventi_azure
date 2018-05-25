@@ -30,7 +30,10 @@ function getClientFromParams(clientData, originalDetectIntentRequest, session) {
 
         Request_Paramaters: clientData,
         Request_OriginalDetectIntentRequest: originalDetectIntentRequest,
-        Request_Session: session
+        Request_Session: session,
+
+        Notify: 1,
+        User_ID: getUserId(originalDetectIntentRequest)
     };
 }
 
@@ -66,6 +69,18 @@ function getHashForRowKey() {
     }
 
     return md5(str);
+}
+
+function getUserId(originalDetectIntentRequest) {
+    if (originalDetectIntentRequest &&
+        JSON.pase(originalDetectIntentRequest).payload &&
+        JSON.pase(originalDetectIntentRequest).payload.data &&
+        JSON.pase(originalDetectIntentRequest).payload.data.user
+    ) {
+        return md5(JSON.pase(originalDetectIntentRequest).payload.data.user);
+    }
+
+    return null;
 }
 
 function registerPro(context, params, contexts, originalDetectIntentRequest, session, debug) {
@@ -146,6 +161,20 @@ function registerClient(context, params, contexts, originalDetectIntentRequest, 
                 all: context.bindings.searchProTable
             }
         };
+    }
+}
+
+function stopNotifyClient(context, params, contexts, originalDetectIntentRequest, debug) {
+    let userId = getUserId(originalDetectIntentRequest);
+
+    if (userId) {
+        let found = _.where(context.bindings.searchClientTable, {
+            User_ID: getUserId(originalDetectIntentRequest)
+        });
+
+        if (found.length) {
+            // let client =
+        }
     }
 }
 
