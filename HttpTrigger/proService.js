@@ -83,18 +83,20 @@ function getUserId(originalDetectIntentRequest) {
     return null;
 }
 
+
+/*--- API ---*/
 function registerPro(context, params, contexts, originalDetectIntentRequest, session, debug) {
     let proData = mergeParamsFromContexts(contexts);
-    let found = _.where(context.bindings.searchProTable, {
+    let found = _.where(context.bindings.searchProCollection, {
         RowKey: getHashForRowKey(
-            proData['email.original'], 
+            proData['email.original'],
             proData['Service-Name-Entity.original']
         )
     });
 
     if (!found.length) {
         let pro = getProFromParams(proData, originalDetectIntentRequest, session);
-        context.bindings.registerProTable = pro;
+        context.bindings.registerProCollection = pro;
 
         return {
             fulfillmentText: 'Thanks, you were registered as a ' + pro.Service + '.',
@@ -103,7 +105,7 @@ function registerPro(context, params, contexts, originalDetectIntentRequest, ses
                 found: found,
                 proData: proData,
                 contexts: contexts,
-                all: context.bindings.searchProTable
+                all: context.bindings.searchProCollection
             }
         };
     }
@@ -115,7 +117,7 @@ function registerPro(context, params, contexts, originalDetectIntentRequest, ses
             found: found,
             proData: proData,
             contexts: contexts,
-            all: context.bindings.searchProTable
+            all: context.bindings.searchProCollection
         }
     };
 }
@@ -123,7 +125,7 @@ function registerPro(context, params, contexts, originalDetectIntentRequest, ses
 function searchPro(context, params, contexts, debug) {
     let proData = mergeParamsFromContexts(contexts);
     let service = {Service: proData['Service-Name-Entity']};
-    let pros = _.where(context.bindings.searchProTable, service);
+    let pros = _.where(context.bindings.searchProCollection, service);
 
     let notify = 'Ok, thank you !';
     if (pros.length) {
@@ -136,20 +138,20 @@ function searchPro(context, params, contexts, debug) {
         source: !debug ? sourceReg : {
             pros: pros,
             notify: notify,
-            all: context.bindings.searchProTable
+            all: context.bindings.searchProCollection
         }
     };
 }
 
 function registerClient(context, params, contexts, originalDetectIntentRequest, session, debug) {
     let clientData = mergeParamsFromContexts(contexts);
-    let found = _.where(context.bindings.searchClientTable, {
+    let found = _.where(context.bindings.searchClientCollection, {
         RowKey: getHashForRowKey(clientData['email.original'], clientData['Service-Name-Entity.original'])
     });
 
     if (!found.length) {
         let client = getClientFromParams(clientData, originalDetectIntentRequest, session);
-        context.bindings.registerClientTable = client;
+        context.bindings.registerClientCollection = client;
 
         return {
             fulfillmentText: 'Thanks, you were registered as a ' + client.Name + '.',
@@ -158,7 +160,7 @@ function registerClient(context, params, contexts, originalDetectIntentRequest, 
                 found: found,
                 clientData: clientData,
                 contexts: contexts,
-                all: context.bindings.searchProTable
+                all: context.bindings.searchProCollection
             }
         };
     }
@@ -168,7 +170,7 @@ function stopNotifyClient(context, params, contexts, originalDetectIntentRequest
     let userId = getUserId(originalDetectIntentRequest);
 
     if (userId) {
-        let found = _.where(context.bindings.searchClientTable, {
+        let found = _.where(context.bindings.searchClientCollection, {
             User_ID: getUserId(originalDetectIntentRequest)
         });
 
@@ -177,6 +179,7 @@ function stopNotifyClient(context, params, contexts, originalDetectIntentRequest
         }
     }
 }
+/*--- /API ---*/
 
 module.exports = {
     registerPro: registerPro,

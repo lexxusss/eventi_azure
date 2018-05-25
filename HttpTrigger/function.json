@@ -42,6 +42,38 @@
       "tableName": "clientTable",
       "connection": "eventiappb6cb_STORAGE",
       "direction": "out"
+    },
+    {
+      "type": "documentDB",
+      "name": "searchProCollection",
+      "databaseName": "eventi",
+      "collectionName": "proCollection",
+      "connection": "alex-hello-world_DOCUMENTDB",
+      "direction": "in"
+    },
+    {
+      "type": "documentDB",
+      "name": "searchClientCollection",
+      "databaseName": "eventi",
+      "collectionName": "clientCollection",
+      "connection": "alex-hello-world_DOCUMENTDB",
+      "direction": "in"
+    },
+    {
+      "type": "documentDB",
+      "name": "registerProCollection",
+      "databaseName": "eventi",
+      "collectionName": "proCollection",
+      "connection": "alex-hello-world_DOCUMENTDB",
+      "direction": "out"
+    },
+    {
+      "type": "documentDB",
+      "name": "registerClientCollection",
+      "databaseName": "eventi",
+      "collectionName": "clientCollection",
+      "connection": "alex-hello-world_DOCUMENTDB",
+      "direction": "out"
     }
   ],
   "disabled": false
