@@ -28,7 +28,7 @@ function searchClients(context) {
 
         let clientsForService = clients[service];
 
-        notifyToSlack(context, clientsForService, notify);
+        // notifyToSlack(context, clientsForService, notify);
     }
 }
 
