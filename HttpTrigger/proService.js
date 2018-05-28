@@ -6,6 +6,8 @@ const sourceReg = 'register-pro';
 const PartitionKeyPro = 'eventi_pro';
 const PartitionKeyClient = 'eventi_client';
 
+let clientService = require('./clientService');
+
 function getProFromParams(proData, originalDetectIntentRequest, session) {
     return {
         Email: proData['email.original'],
@@ -33,6 +35,7 @@ function getClientFromParams(clientData, originalDetectIntentRequest, session) {
         Request_Session: session,
 
         Notify: 1,
+        LastNotified: new Date(),
         User_ID: getUserId(originalDetectIntentRequest)
     };
 }
@@ -180,12 +183,30 @@ function stopNotifyClient(context, params, contexts, originalDetectIntentRequest
             User_ID: getUserId(originalDetectIntentRequest)
         });
 
-        return {found: found};
-
         if (found.length) {
             let client = found[0];
             client.Notify = 0;
 
+            clientService.updateClient(context, client);
+        }
+    }
+
+    return {userId: userId};
+}
+
+function startNotifyClient(context, params, contexts, originalDetectIntentRequest, debug) {
+    let userId = getUserId(originalDetectIntentRequest);
+
+    if (userId) {
+        let found = _.where(context.bindings.searchClientCollection, {
+            User_ID: getUserId(originalDetectIntentRequest)
+        });
+
+        if (found.length) {
+            let client = found[0];
+            client.Notify = 1;
+
+            clientService.updateClient(context, client);
         }
     }
 

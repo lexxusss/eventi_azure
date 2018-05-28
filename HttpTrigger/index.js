@@ -1,6 +1,5 @@
 
-var proService = require('./proService');
-var md5 = require('md5');
+let proService = require('./proService');
 
 module.exports = function (context, req) {
     let body = req.body;

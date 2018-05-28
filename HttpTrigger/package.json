@@ -1,8 +1,8 @@
 {
-  "name": "moviedbwebhook",
+  "name": "eventi-app",
   "version": "1.0.0",
   "description": "",
-  "repository": "https://lexxusss@bitbucket.org/lexxusss/moviedbwebhook.git",
+  "repository": "https://github.com/lexxusss/eventi_azure.git",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
@@ -18,7 +18,7 @@
     "md5": "^2.2.1",
     "nconf": "^0.10.0",
     "newsapi": "^2.2.0",
-    "node-uuid": "^1.4.8",
+    "uuid": "^3.2.1",
     "underscore": "^1.9.0"
   }
 }
