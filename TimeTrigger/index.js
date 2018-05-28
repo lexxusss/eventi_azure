@@ -2,6 +2,8 @@
 const _ = require('underscore');
 const request = require('request');
 
+let clientService = require('./clientService');
+
 module.exports = function (context, myTimer) {
     var timeStamp = new Date().toISOString();
 
@@ -16,7 +18,7 @@ module.exports = function (context, myTimer) {
 };
 
 function searchClients(context) {
-    let clients = _.where(context.bindings.searchClientTable);
+    let clients = _.where(context.bindings.searchClientTable, {Notify: 1});
     clients = _.groupBy(clients, function(client) {
         return client.Service;
     });
@@ -81,6 +83,10 @@ function notifyToSlack(context, clientsForService, notify) {
                 }
             );
         }
+
+
+        client.LastNotified = new Date();
+        clientService.updateClient(context, client);
     }
 
 }
